@@ -22,7 +22,6 @@ namespace UniversidadeAPI.Controllers{
             return await _context.alunos.Include(x => x.Curso).Select(x => AlunoToDTO(x)).ToListAsync();
         }
 
-        // GET: api/Aluno/5
         [HttpGet("{id:int}")]
         public async Task<ActionResult<AlunoDTO>> GetAluno(long id){
             var aluno = await _context.alunos.Include(x => x.Curso).Where(x => x.Id==id).FirstAsync();
@@ -49,6 +48,7 @@ namespace UniversidadeAPI.Controllers{
 
             aluno.Nome = alunoDTO.Nome;
             aluno.Email = alunoDTO.Email;
+            aluno.Saldo = alunoDTO.Saldo;
             aluno.Curso = curso;
 
             try{
@@ -60,14 +60,18 @@ namespace UniversidadeAPI.Controllers{
             return NoContent();
         }
 
-        [HttpPut("{id}/saldo")]
+        [HttpPut("saldo")]
         public async Task<IActionResult> UpdateSaldoAluno(long id, long custo) {
             var aluno = await _context.alunos.FindAsync(id);
+
 
             if(aluno == null)
                 return NotFound();
 
+            aluno.Nome = aluno.Nome;
+            aluno.Email = aluno.Email;
             aluno.Saldo = aluno.Saldo - custo;
+            aluno.Curso = aluno.Curso;
 
             try{
                 await _context.SaveChangesAsync();

@@ -54,10 +54,8 @@ router.post('/', async (req, res) => {
 
     var custo = prato.custo;
 
-    if(saldo >= 4){
-        var args = { custo: custo };
-
-        aluno.put("http://localhost:7000/api/aluno/" + req.body.numAluno + "/saldo", args, function(){});
+    if(saldo >= custo){
+        aluno.put("http://localhost:7000/api/aluno/saldo?id=" + req.body.numAluno + "&custo=" + custo, function(){});
 
         try {
             const savedReserva = await reserva.save();

@@ -30,6 +30,7 @@ namespace UniversidadeAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Nome = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Saldo = table.Column<long>(type: "INTEGER", nullable: false),
                     CursoId = table.Column<long>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

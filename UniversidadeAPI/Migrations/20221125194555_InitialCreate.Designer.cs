@@ -10,7 +10,7 @@ using UniversidadeApi.Models;
 namespace UniversidadeAPI.Migrations
 {
     [DbContext(typeof(UniversidadeContext))]
-    [Migration("20221122155118_InitialCreate")]
+    [Migration("20221125194555_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,9 @@ namespace UniversidadeAPI.Migrations
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<long>("Saldo")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
