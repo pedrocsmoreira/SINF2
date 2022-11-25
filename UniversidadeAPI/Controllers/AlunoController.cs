@@ -68,10 +68,7 @@ namespace UniversidadeAPI.Controllers{
             if(aluno == null)
                 return NotFound();
 
-            aluno.Nome = aluno.Nome;
-            aluno.Email = aluno.Email;
             aluno.Saldo = aluno.Saldo - custo;
-            aluno.Curso = aluno.Curso;
 
             try{
                 await _context.SaveChangesAsync();
