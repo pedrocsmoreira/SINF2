@@ -52,10 +52,8 @@ router.post('/', async (req, res) => {
         reserva.pratoReservado.custo = 4;
     }
 
-    var custo = prato.custo;
-
     if(saldo >= custo){
-        aluno.put("http://localhost:7000/api/aluno/saldo?id=" + req.body.numAluno + "&custo=" + custo, function(){});
+        aluno.put("http://localhost:7000/api/aluno/saldo?id=" + req.body.numAluno + "&custo=" + prato.custo, function(){});
 
         try {
             const savedReserva = await reserva.save();
@@ -68,13 +66,11 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.delete('/:reservaId', async (req, res) => {
+router.delete('/:reservaId', async (req, res) => {z
     try {
         const removedReserva = await Reserva.remove({ _id: req.params.reservaId });
 
-        var args = { devolucao: removedReserva.custo };
-
-        aluno.put("http://localhost:7000/api/aluno/" + req.body.numAluno + "/devolucao", args, function(){});
+        aluno.put("http://localhost:7000/api/aluno/saldo?id=" + req.body.numAluno + "&custo=-" + removedReserva.custo, function(){});
 
         try {
             const savedReserva = await reserva.save();
