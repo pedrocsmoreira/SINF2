@@ -79,24 +79,6 @@ namespace UniversidadeAPI.Controllers{
             return NoContent();
         }
 
-        [HttpPut("{id}/devolucao")]
-        public async Task<IActionResult> DevolveSaldoAluno(long id, long custo) {
-            var aluno = await _context.alunos.FindAsync(id);
-
-            if(aluno == null)
-                return NotFound();
-            
-            aluno.Saldo = aluno.Saldo + custo;
-
-            try{
-                await _context.SaveChangesAsync();
-            }catch (DbUpdateConcurrencyException) when (!AlunoExists(id)){
-                return NotFound();
-            }
-
-            return NoContent();
-        }
-
         [HttpPost]
         public async Task<ActionResult<Aluno>> CreateAluno(AlunoDTO alunoDTO){
             var curso = await _context.cursos.Where(x => x.Sigla.Equals(alunoDTO.siglaCurso)).FirstAsync();
