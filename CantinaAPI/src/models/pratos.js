@@ -10,9 +10,6 @@ var PratoSchema = new Schema({
     },
     dia_prato: {
         type: String
-    },
-    custo: {
-        type: Number
     }
 });
 

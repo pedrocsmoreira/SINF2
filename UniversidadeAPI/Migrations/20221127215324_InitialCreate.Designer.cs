@@ -10,7 +10,7 @@ using UniversidadeApi.Models;
 namespace UniversidadeAPI.Migrations
 {
     [DbContext(typeof(UniversidadeContext))]
-    [Migration("20221125194555_InitialCreate")]
+    [Migration("20221127215324_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

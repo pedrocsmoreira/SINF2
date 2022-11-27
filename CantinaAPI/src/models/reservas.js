@@ -22,6 +22,9 @@ var ReservaSchema   = new Schema({
         Email_aluno: {
             type: String
         }
+    },
+    custo: {
+        type: Number
     }
 });
 

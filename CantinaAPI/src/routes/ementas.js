@@ -23,7 +23,7 @@ router.get('/:ementaId', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    var prato = new Prato;
+    var prato = new Prato();
 
     const data = req.body.data.split("/");
 
@@ -31,9 +31,9 @@ router.post('/', async (req, res) => {
 
     ementa.data = new Date(data[2], data[1], data[0]);
 
-    const pratos = req.body.listaPratos.split(",");
+    const pratos = req.body.listaPratos.split("/");
     for(let i = 0; i < pratos.length; i++){
-        prato = await Prato.find({ nome_prato: pratos[i]});
+        prato = await Prato.findById(pratos[i]);
         ementa.listaPratos.push(prato);
     }
 

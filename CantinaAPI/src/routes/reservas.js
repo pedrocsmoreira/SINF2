@@ -47,12 +47,12 @@ router.post('/', async (req, res) => {
     reserva.aluno = aluno;
 
     try{
-        reserva.pratoReservado.custo = req.body.custo;
+        reserva.custo = req.body.custo;
     }catch(err){
-        reserva.pratoReservado.custo = 4;
+        reserva.custo = 4;
     }
 
-    if(saldo >= custo){
+    if(saldo >= reserva.custo){
         aluno.put("http://localhost:7000/api/aluno/saldo?id=" + req.body.numAluno + "&custo=" + prato.custo, function(){});
 
         try {
@@ -70,16 +70,16 @@ router.delete('/:reservaId', async (req, res) => {z
     try {
         const removedReserva = await Reserva.remove({ _id: req.params.reservaId });
 
-        aluno.put("http://localhost:7000/api/aluno/saldo?id=" + req.body.numAluno + "&custo=-" + removedReserva.custo, function(){});
-
         try {
-            const savedReserva = await reserva.save();
-            res.json(savedReserva, {message: "saldo devolvido"});
+            const reserva = await Reserva.findById(req.params.reservaId);
+            aluno.put("http://localhost:7000/api/aluno/saldo?id=" + reserva.aluno.numAluno + "&custo=-" + reserva.custo, function(){});
+            const removedReserva = await Reserva.remove({ _id: req.params.reservaId });
+            res.json(removedReserva, {message: "saldo devolvido"});
         }catch (err) {
             res.json({ message: err });
         }
 
-        res.json(removedReserva);
+        
     } catch (err) {
         res.json({ message: err });
     }
