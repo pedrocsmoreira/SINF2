@@ -77,11 +77,8 @@ namespace UniversidadeAPI.Controllers {
 
         [HttpPost]
         public async Task<ActionResult<UnidadeCurricular>> CreateUnidadeCurricular(UnidadeCurricularDTO unidadeCurricularDTO){
-            if(_context.unidadesCurriculares == null){
-                return Problem("Entity set 'UniversidadeContext.UnidadeCurricular'  is null.");
-            }
-
             var curso = await _context.cursos.Where(x => x.Sigla.Equals(unidadeCurricularDTO.siglaCurso)).FirstAsync();
+
             if(curso == null)
                 return NotFound();
             

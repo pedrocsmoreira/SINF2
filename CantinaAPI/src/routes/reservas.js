@@ -26,7 +26,7 @@ router.get('/:reservaId', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const prato = await Prato.findById(req.body.pratoId);
-    var aluno = new restClient();
+    var client = new restClient();
     const datas = req.body.data.split("/");
     var saldo = 0;
 
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
 
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
-    aluno.get("htpp://localhost:7000/api/aluno/" + req.body.numAluno, function(request, response){
+    client.get("https://localhost:7000/api/aluno/" + req.body.numAluno, function(request, response){
         reserva.aluno.Num_aluno = req.body.numAluno;
         reserva.aluno.Nome_aluno = request.Nome;
         reserva.aluno.Email_aluno = request.Email;
@@ -44,16 +44,16 @@ router.post('/', async (req, res) => {
 
     reserva.data = new Date(datas[2], datas[1], datas[0]);
     reserva.pratoReservado = prato;
-    reserva.aluno = aluno;
 
     try{
         reserva.custo = req.body.custo;
     }catch(err){
         reserva.custo = 4;
     }
+    
 
     if(saldo >= reserva.custo){
-        aluno.put("http://localhost:7000/api/aluno/saldo?id=" + req.body.numAluno + "&custo=" + prato.custo, function(){});
+        aluno.put("https://localhost:7000/api/aluno/saldo?id=" + req.body.numAluno + "&custo=" + prato.custo, function(){});
 
         try {
             const savedReserva = await reserva.save();
@@ -72,7 +72,7 @@ router.delete('/:reservaId', async (req, res) => {z
 
         try {
             const reserva = await Reserva.findById(req.params.reservaId);
-            aluno.put("http://localhost:7000/api/aluno/saldo?id=" + reserva.aluno.numAluno + "&custo=-" + reserva.custo, function(){});
+            aluno.put("https://localhost:7000/api/aluno/saldo?id=" + reserva.aluno.numAluno + "&custo=-" + reserva.custo, function(){});
             const removedReserva = await Reserva.remove({ _id: req.params.reservaId });
             res.json(removedReserva, {message: "saldo devolvido"});
         }catch (err) {

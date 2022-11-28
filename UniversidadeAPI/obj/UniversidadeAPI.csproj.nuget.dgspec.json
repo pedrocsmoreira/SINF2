@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pedro\\Documents\\GitHub\\SINF2\\UniversidadeAPI\\UniversidadeAPI.csproj": {}
+    "/Users/pedromoreira/Documents/ISEP/22-23/S1/SINF2/UniversidadeAPI/UniversidadeAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pedro\\Documents\\GitHub\\SINF2\\UniversidadeAPI\\UniversidadeAPI.csproj": {
+    "/Users/pedromoreira/Documents/ISEP/22-23/S1/SINF2/UniversidadeAPI/UniversidadeAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\Documents\\GitHub\\SINF2\\UniversidadeAPI\\UniversidadeAPI.csproj",
+        "projectUniqueName": "/Users/pedromoreira/Documents/ISEP/22-23/S1/SINF2/UniversidadeAPI/UniversidadeAPI.csproj",
         "projectName": "UniversidadeAPI",
-        "projectPath": "C:\\Users\\pedro\\Documents\\GitHub\\SINF2\\UniversidadeAPI\\UniversidadeAPI.csproj",
-        "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\Documents\\GitHub\\SINF2\\UniversidadeAPI\\obj\\",
+        "projectPath": "/Users/pedromoreira/Documents/ISEP/22-23/S1/SINF2/UniversidadeAPI/UniversidadeAPI.csproj",
+        "packagesPath": "/Users/pedromoreira/.nuget/packages/",
+        "outputPath": "/Users/pedromoreira/Documents/ISEP/22-23/S1/SINF2/UniversidadeAPI/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/pedromoreira/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,7 +67,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -85,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
         }
       }
     }
